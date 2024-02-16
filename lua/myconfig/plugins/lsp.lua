@@ -18,6 +18,11 @@ return {
             -- see :help lsp-zero-keybindings
             -- to learn the available actions
             lsp_zero.default_keymaps({buffer = bufnr})
+
+            -- gl was not working by default
+            vim.keymap.set('n', 'gl', function()
+                vim.diagnostic.open_float()
+            end, {buffer = bufnr})
         end)
 
         require('fidget').setup({})
@@ -66,5 +71,16 @@ return {
             },
         })
     end,
+
+    vim.diagnostic.config({
+        float = {
+            focusable = false,
+            style = "minimal",
+            border = "rounded",
+            source = "always",
+            header = "",
+            prefix = "",
+        },
+    })
 }
 
