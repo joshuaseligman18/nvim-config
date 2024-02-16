@@ -26,18 +26,28 @@ return {
                     'rust_analyzer',
                     'tsserver',
                     'lua_ls',
+                    'gopls',
+                    'clangd',
+                    'arduino_language_server',
                 },
                 handlers = {
                     lsp_zero.default_setup,
                     ["lua_ls"] = function()
-                        local lspconfig = require("lspconfig")
-                        lspconfig.lua_ls.setup {
+                        require("lspconfig").lua_ls.setup {
                             settings = {
                                 Lua = {
                                     diagnostics = {
                                         globals = { "vim" }
                                     }
                                 }
+                            }
+                        }
+                    end,
+                    ['arduino_language_server'] = function()
+                        require("lspconfig").arduino_language_server.setup {
+                            cmd = {
+                                "arduino-language-server",
+                                "-cli-config", "~/arduinoIDE/arduino-cli.yaml",
                             }
                         }
                     end,
