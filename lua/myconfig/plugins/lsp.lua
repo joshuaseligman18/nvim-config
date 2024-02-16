@@ -32,9 +32,8 @@ return {
                 'rust_analyzer',
                 'tsserver',
                 'lua_ls',
-                'gopls',
                 'clangd',
-                'arduino_language_server',
+                'pylsp'
             },
             handlers = {
                 lsp_zero.default_setup,
