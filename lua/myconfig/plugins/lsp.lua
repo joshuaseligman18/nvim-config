@@ -67,6 +67,11 @@ return {
                         }
                     }
                 end,
+                ['gopls'] = function()
+                    require('lspconfig').gopls.setup {
+                        cmd = { 'gopls' }
+                    }
+                end,
             },
         })
     end,
